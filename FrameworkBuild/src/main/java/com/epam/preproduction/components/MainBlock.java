@@ -5,9 +5,12 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.epam.preproduction.configuration.PropertyReader;
+
 public class MainBlock extends Components {
 
-	public static final String BASE_URL = "http://pn.com.ua";
+	//public static final String BASE_URL = "http://pn.com.ua";
+	public static final String BASE_URL = PropertyReader.getMainPageUrl();	
 
 	private static final String ITEM_NAME = "name";
 	private static final String ITEM_PRICE = "price";

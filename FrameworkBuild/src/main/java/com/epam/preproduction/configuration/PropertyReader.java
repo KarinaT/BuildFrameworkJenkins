@@ -55,5 +55,9 @@ public class PropertyReader {
 	public static String getScreenShotsFileExtension() {
 		return props.getProperty("screenShotsFileExtension");
 	}
+	
+		public static String getMainPageUrl() {
+		return System.getProperty("home.page.url");
+	}
 
 }
