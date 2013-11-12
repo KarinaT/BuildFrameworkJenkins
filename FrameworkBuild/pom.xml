@@ -130,13 +130,14 @@
 							<value>org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter</value>
 						</property>
 					</properties>
-					<!-- <systemPropertyVariables> -->
-					<!-- <propertyName>propertyValue</propertyName> -->
-					<!-- <buildDirectory>${browser}</buildDirectory> -->
-					<!-- </systemPropertyVariables> -->
-					<!-- <suiteXmlFiles> -->
-					<!-- <suiteXmlFile>${TARGET_TESTS}</suiteXmlFile> -->
-					<!-- </suiteXmlFiles> -->
+					<systemPropertyVariables>
+					<propertyName>propertyValue</propertyName>
+					<buildDirectory>${TARGET_BROWSER}</buildDirectory>
+					</systemPropertyVariables>
+					<systemPropertyVariables>
+					<propertyName>propertyValue</propertyName>
+					<buildDirectory>${HOME_PAGE_URL}</buildDirectory>
+					</systemPropertyVariables>	
 				</configuration>
 			</plugin>
 		</plugins>
