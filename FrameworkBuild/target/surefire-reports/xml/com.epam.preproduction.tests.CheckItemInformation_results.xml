@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="36,658">
+           time="46,518">
   <properties />
   
   
-            <testcase name="testItemInformation" time="36,658" classname="com.epam.preproduction.tests.CheckItemInformation" />
+            <testcase name="testItemInformation" time="46,518" classname="com.epam.preproduction.tests.CheckItemInformation" />
       
 </testsuite>

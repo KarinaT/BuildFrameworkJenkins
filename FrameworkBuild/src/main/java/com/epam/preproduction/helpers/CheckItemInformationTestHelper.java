@@ -14,6 +14,7 @@ import com.epam.preproduction.pages.ItemPage;
 import com.epam.preproduction.pages.PricePage;
 
 public class CheckItemInformationTestHelper {
+
 	private static CataloguePage cataloguePage;
 	private static PricePage pricePage;
 	private static ItemPage itemPage;
@@ -69,8 +70,12 @@ public class CheckItemInformationTestHelper {
 		List<String> namesList = new ArrayList<String>();
 
 		for (int i = 1; i < 6; i++) {
-			List<WebElement> names = cataloguePage.getDriver().findElements(
-					By.xpath("//div[@class='item'][" + i + "]/div/a"));
+			List<WebElement> names = cataloguePage
+					.getDriver()
+					.findElements(
+							By.xpath(cataloguePage.getCompareBlock().DIV_CLASS_ITEM_PART_1
+									+ i
+									+ cataloguePage.getCompareBlock().DIV_CLASS_ITEM_PART_2));
 			for (WebElement webElement : names) {
 				String hrefs = webElement.getAttribute("href");
 				String itemNames = webElement.getText();
@@ -80,13 +85,15 @@ public class CheckItemInformationTestHelper {
 			cataloguePage
 					.getDriver()
 					.findElement(
-							By.xpath("//div[@class='item'][" + i + "]/div/a"))
+							By.xpath(cataloguePage.getCompareBlock().DIV_CLASS_ITEM_PART_1
+									+ i
+									+ cataloguePage.getCompareBlock().DIV_CLASS_ITEM_PART_2))
 					.click();
-			// PageFactory.initElements(getDriver(), ItemPage.class);
 			urlList.add(i - 1, itemPage.getDriver().getCurrentUrl());
 			cataloguePage.goBack();
-			cataloguePage.refreshLocators();			
-			Assert.assertNotEquals(catalogueLinks, pricePageLinks, "Some links are shown in search results by mistake! ");
+			cataloguePage.refreshLocators();
+			Assert.assertNotEquals(catalogueLinks, pricePageLinks,
+					"Some links are shown in search results by mistake! ");
 
 		}
 
@@ -118,5 +125,10 @@ public class CheckItemInformationTestHelper {
 
 		}
 		return pricePageLinks;
+	}
+	
+	
+	public void checkDescriptions(){
+		
 	}
 }

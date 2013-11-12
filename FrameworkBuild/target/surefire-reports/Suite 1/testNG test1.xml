@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite hostname="EPUAKHAW0472" name="com.epam.preproduction.tests.CheckItemInformation" tests="1" failures="0" timestamp="12 Nov 2013 09:20:51 GMT" time="42.552" errors="0">
-  <testcase name="testItemInformation" time="36.658" classname="com.epam.preproduction.tests.CheckItemInformation"/>
+<testsuite hostname="EPUAKHAW0472" name="com.epam.preproduction.tests.CheckItemInformation" tests="1" failures="0" timestamp="12 Nov 2013 14:55:58 GMT" time="53.928" errors="0">
+  <testcase name="testItemInformation" time="46.518" classname="com.epam.preproduction.tests.CheckItemInformation"/>
 </testsuite>

@@ -8,6 +8,7 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 
 import com.epam.preproduction.components.MainBlock;
+import com.epam.preproduction.configuration.PropertyReader;
 import com.epam.preproduction.helpers.core.WebDriverFactory;
 import com.epam.preproduction.pages.MainPage;
 
@@ -40,7 +41,7 @@ public class TestBase {
 
 
 	protected MainPage goToMainPage() throws Exception {
-		driver.get(MainBlock.BASE_URL + "/");
+		driver.get(PropertyReader.getMainPageUrl() + "/");
 		Reporter.log("Go to website's main page");
 		MainPage mainPage = new MainPage(driver);
 		return mainPage;

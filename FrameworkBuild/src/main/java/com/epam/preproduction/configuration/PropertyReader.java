@@ -56,8 +56,10 @@ public class PropertyReader {
 		return props.getProperty("screenShotsFileExtension");
 	}
 	
-		public static String getMainPageUrl() {
-		return System.getProperty("home.page.url");
+	public static String getMainPageUrl() {
+		return System.getProperty("home.page.url", "http://pn.com.ua/");
 	}
+	
+	
 
 }

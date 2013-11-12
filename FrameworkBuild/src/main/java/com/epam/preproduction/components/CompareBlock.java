@@ -17,7 +17,8 @@ public class CompareBlock {
 	public static final String CHARACTERISTIC_VALUE = "//div[@class='val']";
 	public static final String CHARACTERISTIC_TYPE = "//div[@class='pr']";
 	public static final String CHARACTERISTIC_ROW = "row";
-	//public static final String CHARACTERISTIC_ROW = "//div[@class='row']";
+	public static final String DIV_CLASS_ITEM_PART_2 = "]/div/a";
+	public static final String DIV_CLASS_ITEM_PART_1 = "//div[@class='item'][";
 	
 
 	private static final String FIRST_ITEM = "//div[@class='item'][1]/div[@class='name']/a";
