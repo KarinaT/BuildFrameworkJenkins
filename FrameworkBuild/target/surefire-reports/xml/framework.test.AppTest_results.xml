@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="$results.testClass.xmlTest.name"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0,016">
+  <properties />
+  
+  
+            <testcase name="testApp on instance testApp(framework.test.AppTest)" time="0,016" classname="framework.test.AppTest" />
+      
+</testsuite>
