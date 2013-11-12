@@ -135,12 +135,6 @@
 					<!-- <propertyName>propertyValue</propertyName> -->
 					<!-- <buildDirectory>${TARGET_BROWSER}</buildDirectory> -->
 					<!-- </systemPropertyVariables> -->
-					<systemPropertyVariables>
-						<systemProperty>
-							<name>home.page.url</name>
-							<value>${HOME_PAGE_URL}</value>
-						</systemProperty>
-					</systemPropertyVariables>
 					<!-- <suiteXmlFiles> -->
 					<!-- <suiteXmlFile>${TARGET_TESTS}</suiteXmlFile> -->
 					<!-- </suiteXmlFiles> -->
