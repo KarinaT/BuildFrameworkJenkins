@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite hostname="EPUAKHAW0472" name="framework.test.AppTest" tests="1" failures="0" timestamp="12 Nov 2013 14:17:22 GMT" time="0.04" errors="0">
-  <testcase name="testApp on instance testApp(framework.test.AppTest)" time="0.016" classname="framework.test.AppTest"/>
-</testsuite>
