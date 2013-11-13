@@ -38,8 +38,6 @@ public class TestBase {
 		System.out.println("===end===>setUp");
 
 	}
-
-
 	protected MainPage goToMainPage() throws Exception {
 		driver.manage().window().maximize();
 		driver.get(PropertyReader.getMainPageUrl() + "/");
