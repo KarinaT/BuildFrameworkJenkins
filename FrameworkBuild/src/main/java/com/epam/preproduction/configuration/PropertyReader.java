@@ -61,9 +61,6 @@ public class PropertyReader {
 	}
 	
 	public static String getOperaBinaryPath() {
-		return System.getProperty("opera.binary", "operaDriverFile");
+		return System.getProperty("operaDriverFile");
 	}
-	
-	
-
 }
