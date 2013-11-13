@@ -60,6 +60,10 @@ public class PropertyReader {
 		return System.getProperty("home.page.url", "http://pn.com.ua/");
 	}
 	
+	public static String getOperaBinaryPath() {
+		return System.getProperty("opera.binary", "operaDriverFile");
+	}
+	
 	
 
 }
