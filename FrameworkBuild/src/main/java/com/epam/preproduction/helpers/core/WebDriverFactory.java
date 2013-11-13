@@ -1,8 +1,6 @@
 package com.epam.preproduction.helpers.core;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -11,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.epam.preproduction.configuration.PropertyReader;
 import com.opera.core.systems.OperaDriver;
 
@@ -23,7 +20,6 @@ public class WebDriverFactory {
 	public static void setDefaultHub(String newDefaultHub) {
 		defaultHub = newDefaultHub;
 	}
-
 	public static void setRestartFrequency(int newRestartFrequency) {
 		restartFrequency = newRestartFrequency;
 	}
@@ -44,19 +40,16 @@ public class WebDriverFactory {
 			key = newKey;
 			return newWebDriver(hub, capabilities);
 		}
-
 		try {
 			driver.getCurrentUrl();
 		} catch (Throwable t) {
 			t.printStackTrace();
 			return newWebDriver(hub, capabilities);
 		}
-
 		if (count >= restartFrequency) {
 			dismissDriver();
 			return newWebDriver(hub, capabilities);
 		}
-
 		return driver;
 	}
 	public static WebDriver getDriver(Capabilities capabilities) {
@@ -80,7 +73,6 @@ public class WebDriverFactory {
 		count = 0;
 		return driver;
 	}
-
 	private static WebDriver createRemoteDriver(String hub,
 			Capabilities capabilities) {
 		try {
@@ -101,13 +93,11 @@ public class WebDriverFactory {
 			return new ChromeDriver(capabilities);
 		}
 		if (browserType.equals("opera")) {
-			System.setProperty("opera.binary",
-					PropertyReader.getOperaBinaryPath());
+			System.setProperty("opera.binary",PropertyReader.getOperaBinaryPath());
 			return new OperaDriver(capabilities);
 		}
 		throw new Error("Unrecognized browser type: " + browserType);
 	}
-
 	static {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
