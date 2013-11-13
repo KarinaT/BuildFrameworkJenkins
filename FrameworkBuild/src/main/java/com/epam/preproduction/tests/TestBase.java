@@ -27,11 +27,10 @@ public class TestBase {
 
 		// for Jenkins ====== >
 		DesiredCapabilities caps = new DesiredCapabilities();
-		//caps.setBrowserName(System.getProperty("webdriver.browser", "firefox"));
-		caps.setBrowserName(System.getProperty("webdriver.browser", "chrome"));
+		caps.setBrowserName(System.getProperty("webdriver.browser", "firefox"));
 		driver = WebDriverFactory.getDriver(caps);
 
-		// driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
+		//driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		System.out.println("===end===>setUp");
 
