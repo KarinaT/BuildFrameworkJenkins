@@ -102,8 +102,10 @@ public class WebDriverFactory {
 			return new FirefoxDriver(capabilities);
 		if (browserType.startsWith("internet explorer"))
 			return new InternetExplorerDriver(capabilities);
-		if (browserType.equals("chrome"))
+		if (browserType.equals("chrome")){
+			System.setProperty("webdriver.chrome.driver", "C:/Program Files/Google/Chrome/Application/chrome.exe");
 			return new ChromeDriver(capabilities);
+		}
 		if (browserType.equals("opera")) {
 
 			// DesiredCapabilities capabilities2 = DesiredCapabilities.opera();
