@@ -16,7 +16,6 @@ import com.epam.preproduction.configuration.PropertyReader;
 import com.opera.core.systems.OperaDriver;
 
 public class WebDriverFactory {
-
 	private static String defaultHub = null;
 
 	private static int restartFrequency = Integer.MAX_VALUE;
@@ -28,7 +27,6 @@ public class WebDriverFactory {
 	public static void setRestartFrequency(int newRestartFrequency) {
 		restartFrequency = newRestartFrequency;
 	}
-
 	private static String key = null;
 	private static int count = 0;
 	private static WebDriver driver;
@@ -61,11 +59,9 @@ public class WebDriverFactory {
 
 		return driver;
 	}
-
 	public static WebDriver getDriver(Capabilities capabilities) {
 		return getDriver(defaultHub, capabilities);
 	}
-
 	public static void dismissDriver() {
 		if (driver != null) {
 			try {
@@ -77,7 +73,6 @@ public class WebDriverFactory {
 			}
 		}
 	}
-
 	private static WebDriver newWebDriver(String hub, Capabilities capabilities) {
 		driver = (hub == null) ? createLocalDriver(capabilities)
 				: createRemoteDriver(hub, capabilities);
@@ -95,7 +90,6 @@ public class WebDriverFactory {
 			throw new Error("Could not connect to WebDriver hub", e);
 		}
 	}
-
 	private static WebDriver createLocalDriver(Capabilities capabilities) {
 		String browserType = capabilities.getBrowserName();
 		if (browserType.equals("firefox"))
@@ -107,10 +101,6 @@ public class WebDriverFactory {
 			return new ChromeDriver(capabilities);
 		}
 		if (browserType.equals("opera")) {
-
-			// DesiredCapabilities capabilities2 = DesiredCapabilities.opera();
-			// capabilities2.setCapability("opera.binary",
-			// PropertyReader.getOperaBinaryPath());
 			System.setProperty("opera.binary",
 					PropertyReader.getOperaBinaryPath());
 			return new OperaDriver(capabilities);
