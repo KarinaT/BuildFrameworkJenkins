@@ -135,9 +135,9 @@
 					<!-- <propertyName>propertyValue</propertyName> -->
 					<!-- <buildDirectory>${TARGET_BROWSER}</buildDirectory> -->
 					<!-- </systemPropertyVariables> -->
-					<!-- <suiteXmlFiles> -->
-					<!-- <suiteXmlFile>${TARGET_TESTS}</suiteXmlFile> -->
-					<!-- </suiteXmlFiles> -->
+					<suiteXmlFiles>
+					<suiteXmlFile>${testSuite}.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 		</plugins>
