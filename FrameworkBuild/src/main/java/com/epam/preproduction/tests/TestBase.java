@@ -41,6 +41,7 @@ public class TestBase {
 
 
 	protected MainPage goToMainPage() throws Exception {
+		driver.manage().window().maximize();
 		driver.get(PropertyReader.getMainPageUrl() + "/");
 		Reporter.log("Go to website's main page");
 		MainPage mainPage = new MainPage(driver);
