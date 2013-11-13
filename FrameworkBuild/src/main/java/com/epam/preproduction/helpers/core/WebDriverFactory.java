@@ -102,16 +102,11 @@ public class WebDriverFactory {
 		if (browserType.startsWith("internet explorer"))
 			return new InternetExplorerDriver(capabilities);
 		if (browserType.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "C:/Program Files/Google/Chrome/Application/chrome.exe");
+			System.setProperty("webdriver.chrome.driver", PropertyReader.getChromeBinaryPath());
 			return new ChromeDriver(capabilities);
 		}
 		if (browserType.equals("opera")) {
-
-			// DesiredCapabilities capabilities2 = DesiredCapabilities.opera();
-			// capabilities2.setCapability("opera.binary",
-			// PropertyReader.getOperaBinaryPath());
-			System.setProperty("opera.binary",
-					PropertyReader.getOperaBinaryPath());
+			System.setProperty("opera.binary", PropertyReader.getOperaBinaryPath());
 			return new OperaDriver(capabilities);
 		}
 		throw new Error("Unrecognized browser type: " + browserType);
