@@ -1,66 +1,122 @@
-package com.epam.preproduction.configuration;
+package com.epam.preproduction.helpers.core;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.epam.preproduction.configuration.PropertyReader;
 import com.opera.core.systems.OperaDriver;
 
-public class PropertyReader {
+public class WebDriverFactory {
 
-	private static final String sFileName = "configurations.properties";
-	private static String sDirSeparator = System.getProperty("file.separator");
-	private static Properties props = new Properties();
+	private static String defaultHub = null;
 
-	static {
-		File currentDir = new File(".");
+	private static int restartFrequency = Integer.MAX_VALUE;
+
+	public static void setDefaultHub(String newDefaultHub) {
+		defaultHub = newDefaultHub;
+	}
+
+	public static void setRestartFrequency(int newRestartFrequency) {
+		restartFrequency = newRestartFrequency;
+	}
+
+	private static String key = null;
+	private static int count = 0;
+	private static WebDriver driver;
+
+	public static WebDriver getDriver(String hub, Capabilities capabilities) {
+		count++;
+
+		if (driver == null) {
+			return newWebDriver(hub, capabilities);
+		}
+
+		String newKey = capabilities.toString() + ":" + hub;
+		if (!newKey.equals(key)) {
+			dismissDriver();
+			key = newKey;
+			return newWebDriver(hub, capabilities);
+		}
+
 		try {
-			String sFilePath = currentDir.getCanonicalPath() + sDirSeparator
-					+ sFileName;
+			driver.getCurrentUrl();
+		} catch (Throwable t) {
+			t.printStackTrace();
+			return newWebDriver(hub, capabilities);
+		}
 
-			FileInputStream ins = new FileInputStream(sFilePath);
-			props.load(ins);
+		if (count >= restartFrequency) {
+			dismissDriver();
+			return newWebDriver(hub, capabilities);
+		}
 
-		} catch (FileNotFoundException e) {
+		return driver;
+	}
 
-			System.out.println("File not found!");
+	public static WebDriver getDriver(Capabilities capabilities) {
+		return getDriver(defaultHub, capabilities);
+	}
 
-			e.printStackTrace();
+	public static void dismissDriver() {
+		if (driver != null) {
+			try {
+				driver.quit();
+				driver = null;
+				key = null;
+			} catch (WebDriverException ex) {
 
-		} catch (IOException ex) {
-
-			System.out.println("IO Error!");
-
-			ex.printStackTrace();
-
+			}
 		}
 	}
 
-	public static String getInputExcelFileName() {
-		return props.getProperty("fileInputExcel");
+	private static WebDriver newWebDriver(String hub, Capabilities capabilities) {
+		driver = (hub == null) ? createLocalDriver(capabilities)
+				: createRemoteDriver(hub, capabilities);
+		key = capabilities.toString() + ":" + hub;
+		count = 0;
+		return driver;
 	}
 
-	public static String getScreenShotsDestinationFolder() {
-		return props.getProperty("fileOutputScreenshot");
+	private static WebDriver createRemoteDriver(String hub,
+			Capabilities capabilities) {
+		try {
+			return new RemoteWebDriver(new URL(hub), capabilities);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			throw new Error("Could not connect to WebDriver hub", e);
+		}
 	}
 
-	public static String getScreenShotsFileExtension() {
-		return props.getProperty("screenShotsFileExtension");
+	private static WebDriver createLocalDriver(Capabilities capabilities) {
+		String browserType = capabilities.getBrowserName();
+		if (browserType.equals("firefox"))
+			return new FirefoxDriver(capabilities);
+		if (browserType.startsWith("internet explorer"))
+			return new InternetExplorerDriver(capabilities);
+		if (browserType.equals("chrome")){
+			System.setProperty("webdriver.chrome.driver", PropertyReader.getChromeBinaryPath());
+			return new ChromeDriver(capabilities);
+		}
+		if (browserType.equals("opera")) {
+			System.setProperty("opera.binary", PropertyReader.getOperaBinaryPath());
+			return new OperaDriver(capabilities);
+		}
+		throw new Error("Unrecognized browser type: " + browserType);
 	}
-	
-	public static String getMainPageUrl() {
-		return System.getProperty("home.page.url", "http://pn.com.ua/");
-	}
-	
-	public static String getOperaBinaryPath() {
-		return System.getProperty("operaDriverFile");
+
+	static {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				dismissDriver();
+			}
+		});
 	}
 }
