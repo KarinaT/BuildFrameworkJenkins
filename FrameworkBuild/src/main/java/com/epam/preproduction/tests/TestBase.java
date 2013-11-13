@@ -27,7 +27,8 @@ public class TestBase {
 
 		// for Jenkins ====== >
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setBrowserName(System.getProperty("webdriver.browser", "firefox"));
+		//caps.setBrowserName(System.getProperty("webdriver.browser", "firefox"));
+		caps.setBrowserName(System.getProperty("webdriver.browser", "chrome"));
 		driver = WebDriverFactory.getDriver(caps);
 
 		// driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
