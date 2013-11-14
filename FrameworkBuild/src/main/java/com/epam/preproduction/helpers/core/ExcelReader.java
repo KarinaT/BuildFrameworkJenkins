@@ -1,8 +1,7 @@
-package com.epam.preproduction.helpers.core;
+package com.epam.preproduction.configuration;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -10,25 +9,17 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 
-public class ExcelReader implements IReader {
+public class ExcelReader {
 
-	public Object[][] reader(String fileName, String sheetNumber) {
+	public Object[][] readExcel(String fileName, String sheetNumber)
+			throws IOException {
 
 		Object[][] data = null;
 
-		FileInputStream file = null;
-		HSSFWorkbook workbook;
-		HSSFSheet sheet = null;
-		try {
-			file = new FileInputStream(new File(fileName));
-			workbook = new HSSFWorkbook(file);
-			sheet = workbook.getSheet(sheetNumber);
-		} catch (FileNotFoundException e) {
+		FileInputStream file = new FileInputStream(new File(fileName));
 
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		HSSFWorkbook workbook = new HSSFWorkbook(file);
+		HSSFSheet sheet = workbook.getSheet(sheetNumber);
 
 		HSSFRow row = sheet.getRow(0);
 
@@ -59,11 +50,7 @@ public class ExcelReader implements IReader {
 
 		}
 
-		try {
-			file.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		file.close();
 		return data;
 	}
 
