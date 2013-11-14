@@ -3,6 +3,6 @@ package com.epam.preproduction.helpers.core;
 
 public interface IReader {
 	
-	Object[][] readFromExcel();
+	Object[][] reader(String fileName, String sheetNumber);
 
 }

@@ -47,7 +47,7 @@ public class PropertyReader {
 	public static String getScreenShotsFileExtension() {
 		return props.getProperty("screenShotsFileExtension");
 	}
-	
+
 	public static String getMainPageUrl() {
 		return System.getProperty("home.page.url", "http://pn.com.ua");
 	}
@@ -55,9 +55,12 @@ public class PropertyReader {
 	public static String getOperaBinaryPath() {
 		return System.getProperty("operaDriverFile");
 	}
-	
+
 	public static String getChromeBinaryPath() {
 		return System.getProperty("chromedriverFile");
 	}
 
+	public static String getInputXmlFileName() {
+		return props.getProperty("fileInputXml");
+	}
 }

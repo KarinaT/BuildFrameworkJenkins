@@ -5,8 +5,6 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.epam.preproduction.configuration.PropertyReader;
-
 public class MainBlock extends Components {
 
 	//public static final String BASE_URL = "http://pn.com.ua";
@@ -22,6 +20,9 @@ public class MainBlock extends Components {
 
 	public static final String ACTIVE_NEXT_LINK = "active";
 
+	@FindBy(xpath = CLASS_DESCRIPTION)
+	List<WebElement> descriptionList;
+	
 	@FindBy(xpath = CLASS_DESCRIPTION)
 	WebElement description;
 	
@@ -49,6 +50,10 @@ public class MainBlock extends Components {
 
 	public WebElement getProductNames() {
 		return productNames;
+	}
+	
+	public List<WebElement> getDescriptionList() {
+		return descriptionList;
 	}
 	
 	public WebElement getDescription() {

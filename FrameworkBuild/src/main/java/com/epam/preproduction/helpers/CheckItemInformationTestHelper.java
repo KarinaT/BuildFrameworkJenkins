@@ -3,12 +3,15 @@ package com.epam.preproduction.helpers;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import com.epam.preproduction.entities.Item;
 import com.epam.preproduction.pages.CataloguePage;
 import com.epam.preproduction.pages.ItemPage;
 import com.epam.preproduction.pages.PricePage;
@@ -126,9 +129,25 @@ public class CheckItemInformationTestHelper {
 		}
 		return pricePageLinks;
 	}
-	
-	
-	public void checkDescriptions(){
+
+	public void checkDescriptions() {
+		List<WebElement> listOfDescriptions = cataloguePage.getMainBlock()
+				.getDescriptionList();
+		List<String> catalogueDescriptions = new ArrayList<String>();
+		Map<String, String> allCharacteristics = CompareItemsTestHelper.grabAllCharacteristics().getCharacteristics();
 		
+		String descriptions = " ";
+
+		for (int i = 0; i < 5; i++) {
+			descriptions = listOfDescriptions.get(i).getText();
+			catalogueDescriptions.add(descriptions);
+
+			for (Entry<String, String> entry : allCharacteristics.entrySet()) {
+				Assert.assertTrue(allCharacteristics.containsKey(catalogueDescriptions.get(i)) || allCharacteristics.containsValue(catalogueDescriptions.get(i)));
+				
+			}
+
+			System.out.println(catalogueDescriptions);
+		}
 	}
 }

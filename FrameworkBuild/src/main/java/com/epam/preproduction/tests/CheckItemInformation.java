@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.epam.preproduction.configuration.DataProviderLayer;
 import com.epam.preproduction.helpers.CheckItemInformationTestHelper;
+import com.epam.preproduction.helpers.core.XMLReader;
 import com.epam.preproduction.pages.CataloguePage;
 import com.epam.preproduction.pages.ItemPage;
 import com.epam.preproduction.pages.MainPage;
@@ -34,6 +35,8 @@ public class CheckItemInformation extends TestBase {
 		goToMainPage();
 		mainPage.selectProductType(productType);
 		helper.verifyItemLinksAreEqual();
+		//helper.checkDescriptions();
+
 	}
 
 }

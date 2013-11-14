@@ -14,10 +14,13 @@ import com.epam.preproduction.pages.MainPage;
 public class TestBase {
 
 	protected static WebDriver driver;
+
 	public static WebDriver getDriver() {
 		return driver;
 	}
+
 	protected String baseUrl;
+
 	@BeforeClass
 	public void setUp() throws Exception {
 		System.out.println("==start==>setUp");
@@ -32,6 +35,7 @@ public class TestBase {
 		System.out.println("===end===>setUp");
 
 	}
+
 	protected MainPage goToMainPage() throws Exception {
 		driver.manage().window().maximize();
 		driver.get(PropertyReader.getMainPageUrl() + "/");
