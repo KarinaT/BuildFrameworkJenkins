@@ -59,6 +59,9 @@ public class PropertyReader {
 	public static String getChromeBinaryPath() {
 		return System.getProperty("chromedriverFile");
 	}
+	public static String getIEBinaryPath() {
+		return System.getProperty("iedriver");
+	}
 
 	public static String getInputXmlFileName() {
 		return props.getProperty("fileInputXml");
