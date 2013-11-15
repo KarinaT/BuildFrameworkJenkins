@@ -60,7 +60,6 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.1.1</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -119,6 +118,9 @@
 							<value>org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter</value>
 						</property>
 					</properties>
+					<suiteXmlFiles> 
+					<suiteXmlFile>xmlData/${testSuite}.xml</suiteXmlFile>
+ 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 		</plugins>
