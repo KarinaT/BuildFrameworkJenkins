@@ -98,11 +98,9 @@ public class WebDriverFactory {
 	private static WebDriver createLocalDriver(Capabilities capabilities) {
 		String browserType = capabilities.getBrowserName();
 		if (browserType.equals("firefox"))
-		return new FirefoxDriver(capabilities);
-		if (browserType.startsWith("internet explorer")) {
-		System.setProperty("webdriver.ie.driver",PropertyReader.getIEBinaryPath());
+			return new FirefoxDriver(capabilities);
+		if (browserType.startsWith("internet explorer"))
 			return new InternetExplorerDriver(capabilities);
-		}
 		if (browserType.equals("chrome")){
 			System.setProperty("webdriver.chrome.driver", PropertyReader.getChromeBinaryPath());
 			return new ChromeDriver(capabilities);

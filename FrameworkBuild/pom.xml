@@ -6,7 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TestFramework</name>
 	<description>TestFramework</description>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -26,11 +25,6 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>2.35.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jdom</groupId>
-			<artifactId>jdom2</artifactId>
-			<version>2.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -108,20 +102,9 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-surefire-plugin</artifactId> -->
-			<!-- <version>2.8.1</version> -->
-			<!-- <configuration> -->
-			<!-- <suiteXmlFiles> -->
-			<!-- <suiteXmlFile>testngSuite.xml</suiteXmlFile> -->
-			<!-- </suiteXmlFiles> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>testngSuite.xml</suiteXmlFile>
@@ -136,9 +119,6 @@
 							<value>org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter</value>
 						</property>
 					</properties>
-					<!-- <suiteXmlFiles> -->
-					<!-- <suiteXmlFile>${testSuite}.xml</suiteXmlFile> -->
-					<!-- </suiteXmlFiles> -->
 				</configuration>
 			</plugin>
 		</plugins>

@@ -15,8 +15,7 @@ public class PropertyReader {
 	static {
 		File currentDir = new File(".");
 		try {
-			String sFilePath = currentDir.getCanonicalPath() + sDirSeparator
-					+ sFileName;
+			String sFilePath = currentDir.getCanonicalPath() + sDirSeparator + sFileName;
 
 			FileInputStream ins = new FileInputStream(sFilePath);
 			props.load(ins);
@@ -58,9 +57,6 @@ public class PropertyReader {
 
 	public static String getChromeBinaryPath() {
 		return System.getProperty("chromedriverFile");
-	}
-	public static String getIEBinaryPath() {
-		return System.getProperty("iedriver");
 	}
 
 	public static String getInputXmlFileName() {
